@@ -18,12 +18,13 @@ import Login from "./Login";
    }, []);
 
    useEffect(() => {
-     fetch("http://localhost:4000/mental_items")
+     fetch("/mental_items")
        .then((r) => r.json())
        .then((item) => {
          setMentalData(item);
        });
    }, []);
+   
 
    function handleLogout() {
      setUser(null);
@@ -53,8 +54,7 @@ import Login from "./Login";
              <MainContainer
                mentalData={mentalData}
                handleUpdateItem={handleUpdateItem}
-               user={user}
-             />
+               user={user}/>
            }
          />
        </Routes>

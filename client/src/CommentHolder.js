@@ -12,14 +12,13 @@ function CommentHolder({
   const [isEditing, setIsEditing] = useState(false);
   const { description, user } = comment;
 
-  function handleDelete() {
+  function handleDelete(id) {
     fetch(`/comments/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    handleDeleteComment(id);
   }
   return (
     <div className="bubble">
@@ -32,7 +31,7 @@ function CommentHolder({
         />
       ) : (
         <div className="comment-container">
-          <button className="delete-button" onClick={handleDelete}>
+          <button className="delete-button" onClick={()=>handleDelete(comment.id)}>
             X
           </button>
           <button

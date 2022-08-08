@@ -11,7 +11,7 @@ function LoginForm({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username }),
+      body: JSON.stringify({ username: username , password: password}),
     })
       .then((r) => r.json())
       .then((user) => onLogin(user));

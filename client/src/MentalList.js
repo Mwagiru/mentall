@@ -8,18 +8,18 @@ function MentalList({
   handleUpdateItem,
 }) {
   const [dataIndex, setDataIndex] = useState(0);
-  const mentalItems = [...mentalData]
-    .slice(dataIndex, dataIndex + 3)
-
-    .map((mentalItem) => (
+  const mental= [...mentalData]
+     .slice(dataIndex, dataIndex + 3)
+    .map((item) => (
       <MentalItem
-        key={mentalItem.id}
-        mentalItem={mentalItem}
+        key={item.id}
+        mentalItem={item}
         handleUpdateItem={handleUpdateItem}
         clicked={clicked}
         setClicked={setClicked}
       />
     ));
+  
   function handleClickMore() {
     setDataIndex((dataIndex) => (dataIndex + 3) % mentalData.length);
   }
@@ -33,7 +33,7 @@ function MentalList({
         <p>Your Mental Health is Important.</p>
       </div>
       <div className="yoga-list">
-        <div className="yoga-container">{mentalItems}</div>
+        <div className="yoga-container">{mental}</div>
         <div className="float-container">
           <div className="next-container">
             <button

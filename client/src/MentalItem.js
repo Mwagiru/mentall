@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 
-function MentalItem({ mentalitem, handleUpdateItem  }) {
+function MentalItem({ mentalItem, handleUpdateItem  }) {
+  const [isShowingSummary, setIsShowingSummary] = useState(true);
   const {
     id,
     title,
     description,
     is_favorited: isFavorited,
-  } = mentalitem;
+  } = mentalItem;
 
   function handleClick(e) {
     e.preventDefault();
 
-    fetch(`http://localhost:4000/mental_items/${id}`, {
+    fetch(`/mental_items/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -22,14 +23,13 @@ function MentalItem({ mentalitem, handleUpdateItem  }) {
       .then((r) => r.json())
       .then((updatedItem) => handleUpdateItem(updatedItem));
   }
-
  
-  const summary = description.substring(0, 50);
   return (
     <div>
       <div className="yoga-item">
         <h2>{title}</h2>
-        <p className="yoga-card-description">{summary}...</p>
+        <p className="yoga-card-description">{isShowingSummary?`${description.substring(0, 50)}`: description}</p>
+      <button onClick={()=> setIsShowingSummary((prev)=>!prev)}>Read More...</button>
       </div>
     </div>
   );

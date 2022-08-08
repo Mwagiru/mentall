@@ -10,7 +10,7 @@ function MainContainer({ mentalData, handleUpdateItem, user }) {
   return (
        <div>
       <Routes>
-        <Route exact path="/comments" element={<CommentList user={user} />} />
+        <Route exact path="/comments" element={<CommentList user={user}/>} />
         <Route exact path="/comments/:id" element={<ShowComment />} />
         <Route
           exact
@@ -20,6 +20,7 @@ function MainContainer({ mentalData, handleUpdateItem, user }) {
               mentalData={mentalData}
               clicked={clicked}
               setClicked={setClicked}
+              handleUpdateItem={handleUpdateItem}
             />
           }
         />

@@ -6,7 +6,6 @@ function CommentList({ user }) {
   const [description, setDescription] = useState("");
   const [dataIndex, setDataIndex] = useState(0);
   const [showComment, setShowComment] = useState("");
-
   useEffect(() => {
     fetch("/comments")
       .then((r) => r.json())
@@ -14,7 +13,7 @@ function CommentList({ user }) {
         setCommentData(comments);
       });
   }, []);
-
+console.log(commentData);
   function addNewComment(newComment) {
     setCommentData((prevState) => [...prevState, newComment]);
   }
@@ -44,12 +43,12 @@ function CommentList({ user }) {
     e.preventDefault();
     const newCommentObj = {
       description: description,
-      user_id: 1,
+      user_id: user.id,
       mental_item_id: 1,
     };
     fetch("/comments", {
       method: "POST",
-      headers: { "Content-Type": "applictaion/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newCommentObj),
     })
       .then((response) => response.json())
