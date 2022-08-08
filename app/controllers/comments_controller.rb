@@ -1,6 +1,6 @@
+
 class CommentsController < ApplicationController
-end
-class CommentsController < ApplicationController
+        
     def index
         comments = Comment.all
         render json: comments, status: :ok
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     def find_comment
         Comment.find(params[:id])
     end
-    def comments_params
+    def comment_params
         params.permit(:description, :mental_item_id, :user_id)
     end
 end
